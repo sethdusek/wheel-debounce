@@ -6,16 +6,16 @@ I have a Lamzu Atlantis OG V2 4k. Unfortunately after 2 years of use the scroll 
 
 ## Solution
 
-This script will intercept libinput events, and ignore scroll events that are in the opposite direction of the last scroll event and happen between the debounce threshold (50ms seems to work well by default)
+This script will intercept libinput events, and ignore scroll events that are in the opposite direction of the last scroll event and happen between the debounce threshold (100ms seems to work well by default)
 
 ## Configuration
 
 Edit the constants at the top of `wheel-debounce.lua`:
 
-| Variable               | Default                     | Description                                                                                                          |
-| ---------------------- | --------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `MOUSE_NAME`           | `"Compx LAMZU 4K Receiver"` | The evdev name of your mouse                                                                                         |
-| `DEBOUNCE_TIME_MICROS` | `50000`                     | Debounce window in microseconds (50 ms). Increase this if you still get occasional scrolls in the opposite direction |
+| Variable               | Default                     | Description                                                                                                           |
+| ---------------------- | --------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `MOUSE_NAME`           | `"Compx LAMZU 4K Receiver"` | The evdev name of your mouse                                                                                          |
+| `DEBOUNCE_TIME_MICROS` | 100000                      | Debounce window in microseconds (100 ms). Increase this if you still get occasional scrolls in the opposite direction |
 
 To find your mouse's evdev name:
 
@@ -25,7 +25,7 @@ libinput list-devices
 
 ## Installation
 
-The best place to put wheel-debounce is in `/etc/libinput/plugins`, since most Wayland compositors should load from there.
+The best place to put wheel-debounce is in `/etc/libinput/plugins` after substiting your mouse name, since most Wayland compositors should load from there.
 
 To verify that you've correctly selected your mouse name and that the plugin is loaded:
 
